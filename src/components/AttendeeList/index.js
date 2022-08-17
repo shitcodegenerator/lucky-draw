@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import Attendee from './Attendee'
 import { useSelector, useDispatch } from 'react-redux'
-import { getWinner, generateFakeData } from '../../features/draw/drawSlice'
+import { generateFakeData } from '../../features/draw/drawSlice'
 import { useEffect } from 'react'
+import breakpoints from '../../utils/breakpoints'
 
 const AttendeeContainer = styled.ul`
   list-style: none;
@@ -14,6 +15,11 @@ const AttendeeContainer = styled.ul`
   margin-left: 24px;
   border-radius: 8px;
   padding-left: 0;
+
+  ${breakpoints('sm')`
+    margin-left: 0;
+    width: 100%;
+  `}
 `
 
 const AttendeeList = () => {
@@ -21,7 +27,7 @@ const AttendeeList = () => {
   const attendees = useSelector((state) => state.draw.attendees)
   useEffect(() => {
     dispatch(generateFakeData())
-  }, [])
+  }, [dispatch])
   return (
     <AttendeeContainer>
       {attendees.map((i) => (

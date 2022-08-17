@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import ReactDOM from 'react-dom'
 import { useEffect, useState } from 'react'
 import CloseIcon from '../../assets/icons/close.svg'
+import breakpoints from '../../utils/breakpoints'
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -38,6 +39,11 @@ const ModalWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${breakpoints('sm')`
+      width: 100%;
+      padding: 0;
+    `}
   }
 `
 
@@ -45,7 +51,6 @@ const TitleWrapper = styled.div`
   position: absolute;
   top: 0;
   padding: 12px 0;
-  // width: 100%;
   left: 50%;
   transform: translateX(-50%);
   color: #4d4d4d;
@@ -58,19 +63,13 @@ const TitleWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  padding: 48px 0 0 0;
+  padding: 48px 24px 24px;
+  text-align: center;
   color: #4d4d4d;
+  width: 100%;
 `
 
 const Dialog = ({ children, onClose, title }) => {
-  // useEffect(() => {
-  //   const closeOnEscapeKey = (e) => (e.key === 'Escape' ? onClose() : null)
-  //   document.body.addEventListener('keydown', closeOnEscapeKey)
-  //   return () => {
-  //     document.body.removeEventListener('keydown', closeOnEscapeKey)
-  //   }
-  // }, [onClose])
-
   const [domReady, setDomReady] = useState(false)
 
   useEffect(() => {
@@ -82,7 +81,7 @@ const Dialog = ({ children, onClose, title }) => {
         <ModalWrapper className="modal">
           <div className="modal-content">
             <button onClick={onClose} className="close-btn">
-              <img src={CloseIcon} />
+              <img src={CloseIcon} alt="x" />
             </button>
             <TitleWrapper>{title}</TitleWrapper>
             <ContentWrapper>{children}</ContentWrapper>

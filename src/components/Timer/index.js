@@ -1,12 +1,18 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { startTimer, stopTimer } from '../../features/timer/timerSlice'
 import styled from 'styled-components'
 import TimerInput from './TimerInput'
+import breakpoints from '../../utils/breakpoints'
 
 const CountdownWrapper = styled.div`
   border-right: 2px solid #eee;
   padding-right: 24px;
+  ${breakpoints('sm')`
+    border-right: none;
+    padding-right: 0;
+    width: 100%;
+  `}
 `
 
 const TimerWrapper = styled.div`
@@ -55,15 +61,17 @@ const Timer = ({ onGetDraw }) => {
     dispatch(stopTimer())
   }
 
+  const memoClearTimer = useCallback(clearTimer, [dispatch])
+
   useEffect(() => {
     if (time.min === 0 && time.sec === 0 && !time.isStop) {
       onGetDraw()
-      clearTimer()
+      memoClearTimer()
     }
-  }, [time.min, time.sec])
+  }, [time.min, time.sec, onGetDraw, time.isStop, memoClearTimer])
 
   const btnClickHandler = () => {
-    time.isStop ? start() : clearTimer()
+    time.isStop ? start() : memoClearTimer()
   }
 
   return (

@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import Timer from '../Timer'
 import AttendeeList from '../AttendeeList'
-import { useEffect, useState } from 'react'
-import Dialog from '../Dialog'
+import { useState } from 'react'
+import WinnerDialog from '../WinnerDialog'
 import { useSelector, useDispatch } from 'react-redux'
-import { getWinner, generateFakeData } from '../../features/draw/drawSlice'
+import { getWinner } from '../../features/draw/drawSlice'
+import { setTime } from '../../features/timer/timerSlice'
+import breakpoints from '../../utils/breakpoints'
 
 const Wrapper = styled.div`
   background: #fff;
@@ -14,6 +16,12 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 20px #c1d4f1;
+
+  ${breakpoints('sm')`
+    flex-direction:column;
+    padding: 12px 24px;
+    width: 80%;
+  `}
 `
 
 const MainContent = () => {
@@ -27,19 +35,16 @@ const MainContent = () => {
     setIsOpen(true)
   }
 
+  const reset = () => {
+    setIsOpen(false)
+    dispatch(setTime({ target: 'min', value: 5 }))
+  }
+
   return (
     <Wrapper>
       <Timer onGetDraw={getDraw} />
       <AttendeeList attendees={draw.attendees} />
-      {isOpen && (
-        <Dialog onClose={() => setIsOpen(false)} title="抽獎結果">
-          <p>
-            恭喜
-            <span>{draw.winner?.name}</span>
-            幸運中獎
-          </p>
-        </Dialog>
-      )}
+      {isOpen && <WinnerDialog winner={draw.winner} onReset={reset}></WinnerDialog>}
     </Wrapper>
   )
 }
