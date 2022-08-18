@@ -7,15 +7,12 @@ import breakpoints from '../../utils/breakpoints'
 const ModalWrapper = styled.div`
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
   overflow: hidden;
   z-index: 999;
-  padding: 40px 20px 20px;
   .close-btn {
     cursor: pointer;
     position: absolute;
@@ -27,6 +24,10 @@ const ModalWrapper = styled.div`
     height: 24px;
     background: transparent;
     z-index: 1;
+    img {
+      width: 100%;
+      height: 100%;
+    }
     :hover {
       transform: scale(1.1);
     }
@@ -34,6 +35,7 @@ const ModalWrapper = styled.div`
   .modal-content {
     position: relative;
     width: 70%;
+    max-width: 360px;
     border-radius: 16px;
     background: #fff;
     display: flex;
@@ -69,6 +71,18 @@ const ContentWrapper = styled.div`
   width: 100%;
 `
 
+const Backdrop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out;
+`
+
 const Dialog = ({ children, onClose, title }) => {
   const [domReady, setDomReady] = useState(false)
 
@@ -79,6 +93,7 @@ const Dialog = ({ children, onClose, title }) => {
   return domReady
     ? ReactDOM.createPortal(
         <ModalWrapper className="modal">
+          <Backdrop onClick={onClose} />
           <div className="modal-content">
             <button onClick={onClose} className="close-btn">
               <img src={CloseIcon} alt="x" />

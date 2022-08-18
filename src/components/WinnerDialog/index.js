@@ -14,24 +14,27 @@ const WinnerContent = styled.div`
     margin: 0 4px;
     font-weight: bold;
   }
-
-  button {
-    appearance: none;
-    background: linear-gradient(120deg, #a1fda7 0%, #d2ffd5 100%);
-    border-radius: 100px;
-    padding: 12px 48px;
-    border: none;
-    margin-top: 48px;
-    color: #72c878;
-    font-size: 1.25rem;
-    font-weight: bold;
-    letter-spacing: 4px;
-    cursor: pointer;
-    ${breakpoints('sm')`
-      width: 100%;
-      padding: 12px;
-    `}
+`
+const ButtonWrapper = styled.button`
+  appearance: none;
+  background: ${({ type }) =>
+    type === 'cancel' ? '#ddd' : 'linear-gradient(120deg, #a1fda7 0%, #d2ffd5 100%)'};
+  color: ${({ type }) => (type === 'cancel' ? '#777' : '#72c878')};
+  border-radius: 100px;
+  padding: 8px 0;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  cursor: pointer;
+  width: 180px;
+  &:first-of-type {
+    margin: 48px auto 12px auto;
   }
+  ${breakpoints('sm')`
+    width: 100%;
+    padding: 12px;
+  `}
 `
 
 const WinnerDialog = ({ onReset, winner }) => {
@@ -44,7 +47,10 @@ const WinnerDialog = ({ onReset, winner }) => {
           <span>{winner?.name}</span>
           幸運中獎
         </p>
-        <button onClick={onReset}>再抽一次</button>
+        <ButtonWrapper onClick={onReset}>再抽一次</ButtonWrapper>
+        <ButtonWrapper onClick={onReset} type="cancel">
+          取消
+        </ButtonWrapper>
       </WinnerContent>
     </Dialog>
   )
