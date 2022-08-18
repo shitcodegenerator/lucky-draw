@@ -4,17 +4,19 @@ import { setTime } from '../../features/timer/timerSlice'
 
 const Input = styled.input`
   appearance: none;
-  border: ${(props) => (props.isStop ? '2px solid #9fd1c9' : 'none')};
+  border: 2px solid;
+  border-color: ${(props) => (props.isStop ? '#9fd1c9' : 'transparent')};
   border-radius: 8px;
   width: 64px;
   height: 64px;
   text-align: center;
   font-size: 3rem;
+  padding: 0;
 `
 
 const StaticText = styled.span`
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   font-size: 3rem;
 `
 

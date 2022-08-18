@@ -51,7 +51,8 @@ const Timer = ({ onGetDraw }) => {
   const dispatch = useDispatch()
   const time = useSelector((state) => state.timer)
 
-  let timerId = useRef(null)
+  const timerId = useRef(null)
+
   /** 開始計時 */
   const start = () => {
     dispatch(startTimerStatus())
