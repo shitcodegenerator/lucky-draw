@@ -1,4 +1,8 @@
+
+
 # Lucky-draw 抽獎
+
+![img](https://i.imgur.com/qUovOQE.jpg)
 
 Lucky-draw 抽獎 APP，以 `create-react-app` 製作的 demo 用 react 小專案。
 
@@ -7,6 +11,10 @@ Lucky-draw 抽獎 APP，以 `create-react-app` 製作的 demo 用 react 小專�
 - 秒數結束後進行抽獎
 
 ---
+
+
+## 💻 線上預覽
+[Live Demo On Github Pages](https://shitcodegenerator.github.io/lucky-draw/)
 
 
 ## Installation
@@ -30,4 +38,3 @@ yarn
 # 跑起來！
 yarn dev
 ```
-
