@@ -1,30 +1,13 @@
-import styled from 'styled-components'
-import Timer from '../Timer'
-import AttendeeList from '../AttendeeList'
+import Timer from './components/Timer/Timer'
+import AttendeeList from './components/AttendeeList/AttendeeList'
 import { useState, useEffect } from 'react'
-import WinnerDialog from '../WinnerDialog'
+import WinnerDialog from './components/WinnerDialog/WinnerDialog'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWinner, fetchAttendees } from '../../features/draw/drawSlice'
 import { setTime } from '../../features/timer/timerSlice'
-import breakpoints from '../../utils/breakpoints'
+import HomeWrapper from './index.style'
 
-const Wrapper = styled.div`
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 20px #c1d4f1;
-
-  ${breakpoints('sm')`
-    flex-direction:column;
-    padding: 12px 24px;
-    width: 80%;
-  `}
-`
-
-const MainContent = () => {
+const Home = () => {
   const dispatch = useDispatch()
   const winner = useSelector((state) => state.draw.winner)
 
@@ -47,12 +30,12 @@ const MainContent = () => {
   }, [dispatch])
 
   return (
-    <Wrapper>
+    <HomeWrapper>
       <Timer onGetDraw={getDraw} />
       <AttendeeList />
       {isOpen && <WinnerDialog winner={winner} onReset={reset}></WinnerDialog>}
-    </Wrapper>
+    </HomeWrapper>
   )
 }
 
-export default MainContent
+export default Home

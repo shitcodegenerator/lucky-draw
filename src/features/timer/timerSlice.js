@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { DEFAULT_MIN, DEFAULT_SEC } from '../../constants/request'
 
 export const timerSlice = createSlice({
   name: 'timer',
   initialState: {
-    min: 1,
-    sec: 15,
+    min: DEFAULT_MIN,
+    sec: DEFAULT_SEC,
     isStop: true,
   },
   reducers: {

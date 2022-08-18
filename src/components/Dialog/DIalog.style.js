@@ -1,10 +1,7 @@
 import styled from 'styled-components'
-import ReactDOM from 'react-dom'
-import { useEffect, useState } from 'react'
-import CloseIcon from '../../assets/icons/close.svg'
 import breakpoints from '../../utils/breakpoints'
 
-const ModalWrapper = styled.div`
+export const ModalWrapper = styled.div`
   position: fixed;
   inset: 0;
   display: flex;
@@ -49,7 +46,7 @@ const ModalWrapper = styled.div`
   }
 `
 
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   position: absolute;
   top: 0;
   padding: 12px 0;
@@ -64,14 +61,14 @@ const TitleWrapper = styled.div`
   justify-content: center;
 `
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   padding: 48px 24px 24px;
   text-align: center;
   color: #4d4d4d;
   width: 100%;
 `
 
-const Backdrop = styled.div`
+export const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -82,28 +79,3 @@ const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease-in-out;
 `
-
-const Dialog = ({ children, onClose, title }) => {
-  const [domReady, setDomReady] = useState(false)
-
-  useEffect(() => {
-    setDomReady(true)
-  }, [])
-
-  return domReady
-    ? ReactDOM.createPortal(
-        <ModalWrapper className="modal">
-          <Backdrop onClick={onClose} />
-          <div className="modal-content">
-            <button onClick={onClose} className="close-btn">
-              <img src={CloseIcon} alt="x" />
-            </button>
-            <TitleWrapper>{title}</TitleWrapper>
-            <ContentWrapper>{children}</ContentWrapper>
-          </div>
-        </ModalWrapper>,
-        document.getElementById('dialog'),
-      )
-    : null
-}
-export default Dialog

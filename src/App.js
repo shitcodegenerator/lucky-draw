@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import styled from 'styled-components'
-import MainContent from './components/MainContent/MainContent'
+import Home from './pages/Home'
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -17,7 +17,7 @@ const AppWrapper = styled.div`
 function App() {
   return (
     <AppWrapper className="App">
-      <MainContent />
+      <Home />
     </AppWrapper>
   )
 }
