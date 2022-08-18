@@ -15,6 +15,7 @@ export const timerSlice = createSlice({
       if (isZeroSec) {
         state.min -= 1
         state.sec = 59
+        return
       }
 
       if (isTimesUp) {
