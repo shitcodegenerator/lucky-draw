@@ -34,7 +34,8 @@ export const drawSlice = createSlice({
   reducers: {
     /** 抽獎 */
     getWinner: (state) => {
-      const randomWinnerIndex = Math.floor(Math.random() * 1)
+      const randomWinnerIndex = Math.floor(Math.random() * 20)
+      console.log(randomWinnerIndex)
       state.winner = state.attendees[randomWinnerIndex]
     },
     /** 產生假資料(當作api fail時得替代方案) */
