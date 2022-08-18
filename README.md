@@ -24,6 +24,10 @@ Lucky-draw 抽獎 APP，以 `create-react-app` 製作的 demo 用 react 小專�
 npm install -g yarn
 ```
 
+##### 📝 Node 版本號
+`v16.14.0`
+
+
 ##### 📒 使用說明
 ```bash
 # Clone 專案
