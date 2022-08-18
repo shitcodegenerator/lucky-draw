@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Avatar from '../Common/Avatar'
 
 const AttendeeWrapper = styled.li`
   line-height: 2;
@@ -7,24 +8,17 @@ const AttendeeWrapper = styled.li`
   display: flex;
   align-items: center;
   color: #4d4d4d;
-
-  .id-circle {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #9a9afa;
-    color: #fff;
-    border-radius: 100%;
-    margin-right: 8px;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    background: #eef4ff;
+    color: #014dc6;
   }
 `
 
 const Attendee = ({ children }) => {
   return (
     <AttendeeWrapper>
-      <span className="id-circle">{children.id}</span>
+      <Avatar avatar={children.avatar} id={children.id} />
       <span>{children.name}</span>
     </AttendeeWrapper>
   )

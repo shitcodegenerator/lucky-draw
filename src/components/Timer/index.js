@@ -8,6 +8,9 @@ import breakpoints from '../../utils/breakpoints'
 const CountdownWrapper = styled.div`
   border-right: 2px solid #eee;
   padding-right: 24px;
+  h1 {
+    color: #d45fa6;
+  }
   ${breakpoints('sm')`
     border-right: none;
     padding-right: 0;
@@ -50,6 +53,7 @@ const Timer = ({ onGetDraw }) => {
 
   let timerId = useRef(null)
 
+  /** 開始計時 */
   const start = () => {
     timerId.current = setInterval(() => {
       dispatch(startTimer())
@@ -63,6 +67,20 @@ const Timer = ({ onGetDraw }) => {
 
   const memoClearTimer = useCallback(clearTimer, [dispatch])
 
+  const emptyTimeAlert = () => {
+    alert('請先輸入時間才能抽獎唷！')
+  }
+
+  const btnClickHandler = () => {
+    const isEmptyTime = time.isStop && !time.min && !time.sec
+    if (isEmptyTime) {
+      emptyTimeAlert()
+      return
+    }
+    time.isStop ? start() : memoClearTimer()
+  }
+
+  /** 時間為0 && 尚未停止時，抽籤並呼叫清除timer */
   useEffect(() => {
     if (time.min === 0 && time.sec === 0 && !time.isStop) {
       onGetDraw()
@@ -70,13 +88,9 @@ const Timer = ({ onGetDraw }) => {
     }
   }, [time.min, time.sec, onGetDraw, time.isStop, memoClearTimer])
 
-  const btnClickHandler = () => {
-    time.isStop ? start() : memoClearTimer()
-  }
-
   return (
     <CountdownWrapper>
-      <h1>Timer</h1>
+      <h1>Lucky Countdown</h1>
       <TimerWrapper>
         <TimerInput target="min" />
         ：

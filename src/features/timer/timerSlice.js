@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const timerSlice = createSlice({
   name: 'timer',
   initialState: {
-    min: 10,
-    sec: 3,
+    min: 1,
+    sec: 15,
     isStop: true,
   },
   reducers: {
@@ -12,7 +12,7 @@ export const timerSlice = createSlice({
       state.isStop = false
       if (state.sec === 0 && state.min !== 0) {
         state.min -= 1
-        state.sec = 3
+        state.sec = 59
       }
 
       if (state.min === 0 && state.sec === 0) {
