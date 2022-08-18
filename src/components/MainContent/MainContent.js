@@ -25,24 +25,24 @@ const Wrapper = styled.div`
 `
 
 const MainContent = () => {
-  console.log('Main')
-  const winner = useSelector((state) => state.draw.winner)
   const dispatch = useDispatch()
+  const winner = useSelector((state) => state.draw.winner)
 
   const [isOpen, setIsOpen] = useState(false)
 
+  /** 抽獎 */
   const getDraw = () => {
     dispatch(getWinner())
     setIsOpen(true)
   }
 
+  /** 關閉彈窗 && 時間重置 */
   const reset = () => {
     setIsOpen(false)
     dispatch(setTime({ target: 'min', value: 5 }))
   }
 
   useEffect(() => {
-    console.log('fetch')
     dispatch(fetchAttendees())
   }, [dispatch])
 

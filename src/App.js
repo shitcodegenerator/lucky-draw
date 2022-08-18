@@ -3,9 +3,8 @@ import './App.css'
 import styled from 'styled-components'
 import MainContent from './components/MainContent/MainContent'
 
-const Wrapper = styled.div`
+const AppWrapper = styled.div`
   height: 100vh;
-  background-color: #eef4ff;
   opacity: 0.7;
   background-image: linear-gradient(#d7e5f7 0.9px, transparent 0.9px),
     linear-gradient(to right, #d7e5f7 0.9px, #eef4ff 0.9px);
@@ -17,9 +16,9 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <Wrapper className="App">
+    <AppWrapper className="App">
       <MainContent />
-    </Wrapper>
+    </AppWrapper>
   )
 }
 

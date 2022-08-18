@@ -9,20 +9,26 @@ export const timerSlice = createSlice({
   },
   reducers: {
     startTimer: (state) => {
-      state.isStop = false
-      if (state.sec === 0 && state.min !== 0) {
+      const isZeroSec = state.sec === 0 && state.min !== 0
+      const isTimesUp = state.min === 0 && state.sec === 0
+
+      if (isZeroSec) {
         state.min -= 1
         state.sec = 59
       }
 
-      if (state.min === 0 && state.sec === 0) {
+      if (isTimesUp) {
         state.isStop = true
         return
       }
+
       state.sec -= 1
     },
-    stopTimer: (state) => {
+    stopTimerStatus: (state) => {
       state.isStop = true
+    },
+    startTimerStatus: (state) => {
+      state.isStop = false
     },
     setTime: (state, { payload }) => {
       const { target, value } = payload
@@ -31,6 +37,6 @@ export const timerSlice = createSlice({
   },
 })
 
-export const { startTimer, stopTimer, setTime } = timerSlice.actions
+export const { startTimer, stopTimerStatus, setTime, startTimerStatus } = timerSlice.actions
 
 export default timerSlice.reducer

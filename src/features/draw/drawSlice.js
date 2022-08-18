@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { TIMEOUT } from '../../constants/request'
+import { TIMEOUT_MS } from '../../constants/request'
 
 /** 假名產生 */
 const generateFakeName = () => {
@@ -15,7 +15,7 @@ const generateFakeName = () => {
 export const fetchAttendees = createAsyncThunk('draw/fetchAttendees', async () => {
   try {
     const res = await axios.get('https://randomuser.me/api/?results=20&', {
-      timeout: TIMEOUT,
+      timeout: TIMEOUT_MS,
     })
 
     return res.data.results

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { startTimer, stopTimer } from '../../features/timer/timerSlice'
+import { startTimer, stopTimerStatus, startTimerStatus } from '../../features/timer/timerSlice'
 import styled from 'styled-components'
 import TimerInput from './TimerInput'
 import breakpoints from '../../utils/breakpoints'
@@ -52,9 +52,9 @@ const Timer = ({ onGetDraw }) => {
   const time = useSelector((state) => state.timer)
 
   let timerId = useRef(null)
-
   /** 開始計時 */
   const start = () => {
+    dispatch(startTimerStatus())
     timerId.current = setInterval(() => {
       dispatch(startTimer())
     }, 1000)
@@ -62,7 +62,7 @@ const Timer = ({ onGetDraw }) => {
 
   const clearTimer = () => {
     clearInterval(timerId.current)
-    dispatch(stopTimer())
+    dispatch(stopTimerStatus())
   }
 
   const memoClearTimer = useCallback(clearTimer, [dispatch])
@@ -77,6 +77,7 @@ const Timer = ({ onGetDraw }) => {
       emptyTimeAlert()
       return
     }
+
     time.isStop ? start() : memoClearTimer()
   }
 

@@ -1,1 +1,1 @@
-export const TIMEOUT = 10000
+export const TIMEOUT_MS = 10000
