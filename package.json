@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^0.27.2",
+    "craco": "^0.0.3",
     "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
@@ -19,12 +20,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "craco start",
+    "build": "craco build",
+    "test": "cracos test",
+    "eject": "craco eject",
     "predeploy": "yarn run build",
-     "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

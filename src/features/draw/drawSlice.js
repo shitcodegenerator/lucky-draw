@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { TIMEOUT_MS } from '../../constants/request'
+import { TIMEOUT_MS } from '@/constants/request'
 
 /** 假名產生 */
 const generateFakeName = () => {

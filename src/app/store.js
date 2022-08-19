@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import timerReducer from '../features/timer/timerSlice'
-import drawReducer from '../features/draw/drawSlice'
+import timerReducer from '@/features/timer/timerSlice'
+import drawReducer from '@/features/draw/drawSlice'
 
 export const store = configureStore({
   reducer: {

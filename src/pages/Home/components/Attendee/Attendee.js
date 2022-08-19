@@ -1,4 +1,4 @@
-import Avatar from '../../../../components/Avatar/Avatar'
+import Avatar from '@/components/Avatar/Avatar'
 import { AttendeeWrapper } from './Attendee.style'
 
 const Attendee = ({ children }) => {

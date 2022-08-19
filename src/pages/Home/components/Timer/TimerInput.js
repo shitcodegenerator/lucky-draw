@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { setTime } from '../../../../features/timer/timerSlice'
+import { setTime } from '@/features/timer/timerSlice'
 
 const Input = styled.input`
   appearance: none;

@@ -1,6 +1,6 @@
 import Attendee from '../Attendee/Attendee'
 import { useSelector } from 'react-redux'
-import Loading from '../../../../components/Loading/Loading'
+import Loading from '@/components/Loading/Loading'
 import { AttendeeListWrapper } from './AttendeeList.style'
 
 const AttendeeList = () => {

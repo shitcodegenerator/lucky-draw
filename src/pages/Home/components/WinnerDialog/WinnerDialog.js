@@ -1,5 +1,5 @@
-import Avatar from '../../../../components/Avatar/Avatar'
-import Dialog from '../../../../components/Dialog/DIalog'
+import Avatar from '@/components/Avatar/Avatar'
+import Dialog from '@/components/Dialog/Dialog'
 import { ButtonWrapper, WinnerContent } from './WinnerDialog.style'
 
 const WinnerDialog = ({ onReset, winner }) => {

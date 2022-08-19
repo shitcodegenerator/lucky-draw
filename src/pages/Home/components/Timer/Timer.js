@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  startTimer,
-  stopTimerStatus,
-  startTimerStatus,
-} from '../../../../features/timer/timerSlice'
+import { startTimer, stopTimerStatus, startTimerStatus } from '@/features/timer/timerSlice'
 import { CountdownWrapper, StartBtn, TimerWrapper } from './Timer.style'
 import TimerInput from './TimerInput'
 

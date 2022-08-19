@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 import { useEffect, useState } from 'react'
-import CloseIcon from '../../assets/icons/close.svg'
-import { Backdrop, ContentWrapper, ModalWrapper, TitleWrapper } from './DIalog.style'
+import CloseIcon from '@assets/icons/close.svg'
+import { Backdrop, ContentWrapper, ModalWrapper, TitleWrapper } from './Dialog.style'
 
 const Dialog = ({ children, onClose, title }) => {
   const [domReady, setDomReady] = useState(false)

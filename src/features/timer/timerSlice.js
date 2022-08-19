@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { DEFAULT_MIN, DEFAULT_SEC } from '../../constants/request'
+import { DEFAULT_MIN, DEFAULT_SEC } from '@/constants/request'
 
 export const timerSlice = createSlice({
   name: 'timer',

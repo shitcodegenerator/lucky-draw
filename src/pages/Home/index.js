@@ -3,8 +3,8 @@ import AttendeeList from './components/AttendeeList/AttendeeList'
 import { useState, useEffect } from 'react'
 import WinnerDialog from './components/WinnerDialog/WinnerDialog'
 import { useSelector, useDispatch } from 'react-redux'
-import { getWinner, fetchAttendees } from '../../features/draw/drawSlice'
-import { setTime } from '../../features/timer/timerSlice'
+import { getWinner, fetchAttendees } from '@/features/draw/drawSlice'
+import { setTime } from '@/features/timer/timerSlice'
 import HomeWrapper from './index.style'
 
 const Home = () => {

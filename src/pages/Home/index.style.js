@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import breakpoints from '../../utils/breakpoints'
+import breakpoints from '@/utils/breakpoints'
 
 const HomeWrapper = styled.div`
   background: #fff;
